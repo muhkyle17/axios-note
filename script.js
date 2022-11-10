@@ -128,7 +128,26 @@ function transformResponse() {
 
 // ERROR HANDLING
 function errorHandling() {
-  console.log('Error Handling')
+  axios
+    .get('https://jsonplaceholder.typicode.com/todoss')
+    .then((res) => showOutput(res))
+    .catch((err) => {
+      if (err.response) {
+        // If true then server responses with a status other than 200 range
+        console.log(err.response.data)
+        console.log(err.response.status)
+        console.log(err.response.headers)
+
+        if (err.response.status === 404) {
+          alert('Error: Page Not Found')
+        } else if (err.request) {
+          // Request was made but there was no response
+          console.error(err.request)
+        } else {
+          console.error(err.message)
+        }
+      }
+    })
 }
 
 // CANCEL TOKEN
