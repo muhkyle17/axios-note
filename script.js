@@ -19,7 +19,28 @@ function getTodos() {
 }
 
 // POST REQUEST
-function addTodo() {}
+function addTodo() {
+  /// Long version
+  // axios({
+  //   method: 'post',
+  //   url: 'https://jsonplaceholder.typicode.com/todos',
+  //   data: {
+  //     title: 'New todo',
+  //     completed: false,
+  //   },
+  // })
+  //   .then((res) => showOutput(res))
+  //   .catch((err) => console.error(err))
+
+  /// Short version
+  axios
+    .post('https://jsonplaceholder.typicode.com/todos', {
+      title: 'New Todo',
+      completed: 'false',
+    })
+    .then((res) => showOutput(res))
+    .catch((err) => console.error(err))
+}
 
 // PUT/PATCH REQUEST
 function updateTodo() {
